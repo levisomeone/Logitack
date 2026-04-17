@@ -1,0 +1,127 @@
+Professor: Me. Vinícius Nunes Barbosa
+Autor: Pedro Levi Pereira da Silva
+Curso: Engenharia de Software
+https://github.com/levisomeone
+
+  # Programação Orientada a Objetos
+  ## Lista 08 – POO Avançada em Java
+  
+  
+  ### Apresentação
+  
+  Fala, futuro engenheiro! Na N2, o foco muda de "como fazer o código funcionar" para "como estruturar o código para que ele dure anos". Herança, classes abstratas e interfaces são a base da reutilização de código e do polimorfismo.
+  
+  A questão abaixo é focada em um **Sistema de Gestão de Logística**, um cenário clássico de Engenharia de Software.
+  
+  ---
+  
+  ## Assuntos Abordados
+  
+  - Herança
+  - Classes Abstratas
+  - Interfaces
+  - Enumerações
+  - Collections
+  
+  ---
+  
+  ## Contexto: Sistema de Frota Logística (LogiTrack)
+  
+  A empresa precisa de um sistema para gerenciar diferentes tipos de veículos. Nem todo veículo se comporta da mesma forma, mas todos pertencem à frota.
+  
+  ---
+  
+  ## Exercício 1: Abstração e Herança
+  
+  1. Crie um pacote `br.edu.logistica.modelo`.
+  
+  2. Crie uma **Classe Abstrata** chamada `Veiculo`:
+     - **Atributos:**
+       - `String placa`
+       - `double capacidadeCarga`
+       - `Enumeração StatusVeiculo` (DISPONIVEL, EM_MANUTENCAO, EM_VIAGEM)
+     - **Método Abstrato:**
+       - `double calcularAutonomia()` – deve ser implementado pelas subclasses, pois cada tipo de veículo gasta combustível de forma diferente.
+  
+  3. Crie duas **subclasses**: `Caminhao` e `Van`:
+     - `Caminhao` deve ter um atributo extra: `int eixos`
+     - `Van` deve ter um atributo extra: `boolean possuiRefrigeracao`
+  
+  ---
+  
+  ## Exercício 2: Interfaces (Contratos de Comportamento)
+  
+  1. Crie uma **Interface** chamada `Monitoravel`:
+     - Métodos:
+       - `void enviarCoordenadas()`
+       - `String obterLocalizacaoAtual()`
+  
+  2. Faça com que **apenas a classe Caminhao** implemente essa interface (supondo que as vans não tenham rastreador via satélite).
+  
+  3. Implemente os métodos na classe `Caminhao` retornando mensagens simuladas (ex: "Coordenadas enviadas via Satélite").
+  
+  ---
+  
+  ## Exercício 3: Enumerações com Dados
+  
+  1. Crie uma **Enumeração** chamada `TipoCombustivel`:
+     - **Constantes:**
+       - `DIESEL (fator 5.5)`
+       - `GASOLINA (fator 10.2)`
+       - `ELETRICO (fator 15.0)`
+     - O "fator" representa quantos km o veículo faz por unidade de energia.
+  
+  2. Adicione um atributo `TipoCombustivel` na classe abstrata `Veiculo`.
+  
+  3. Use esse fator no cálculo do método `calcularAutonomia()` dentro das subclasses.
+  
+  ---
+  
+  ## Exercício 4: Java Collections Framework
+  
+  1. Crie um pacote `br.edu.logistica.servico`.
+  
+  2. Crie a classe `GerenciadorFrota`:
+     - **Atributo:** Uma `List<Veiculo>` para armazenar a frota.
+  
+  3. **Métodos a implementar:**
+     - `adicionarVeiculo(Veiculo v)` – Adiciona à lista.
+     - `listarVeiculosDisponiveis()` – Percorre a lista e exibe apenas os veículos com `StatusVeiculo.DISPONIVEL`.
+     - `gerarRelatorioAutonomia()` – Percorre a lista e imprime a placa e a autonomia calculada de cada veículo (demonstrando **Polimorfismo**).
+  
+  ---
+  
+  ## Exercício 5: Filtros e Lógica
+  
+  1. No `GerenciadorFrota`, crie um método que utilize um `Map<String, Veiculo>`.
+  
+  2. A **chave** do Map deve ser a **Placa** e o **valor** o objeto `Veiculo`.
+  
+  3. Crie um método `buscarPorPlaca(String placa)` que retorne o veículo instantaneamente usando o Map.
+  
+  ---
+  
+  ## Questão Teórica (Para refletir)
+  
+  > "Por que usamos uma Interface para o monitoramento e uma Classe Abstrata para o veículo, em vez de colocar tudo dentro de Veiculo?"
+  
+  **Dica:** Pense na regra de que nem todo veículo é monitorável.
+  
+  ---
+  
+  ## Main
+  
+  1. Monte um sistema completo.
+  2. Cadastre os veículos.
+  3. Faça todas as implementações necessárias.
+  
+  ---
+  
+  ## Instruções de Entrega
+  
+  - Organize o código em pacotes.
+  - Utilize o modificador `final` em métodos que não devem ser sobrescritos.
+  - Utilize `@Override` em todas as implementações de métodos abstratos ou de interface.
+  - Um aluno será sorteado para explicar o sistema.
+  
+  ---
